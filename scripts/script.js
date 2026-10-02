@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all interactive components
     initI18n();
     initMobileMenu();
-    initSmoothScrolling();
     initFAQAccordion();
     initScrollAnimations();
-    initFormHandling();
 });
 
 /**
@@ -220,41 +218,6 @@ function initMobileMenu() {
 }
 
 /**
- * Smooth Scrolling for Anchor Links
- * Provides smooth scrolling behavior for internal navigation links
- */
-function initSmoothScrolling() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            const href = this.getAttribute('href');
-            
-            // Skip if href is just "#"
-            if (href === '#') return;
-            
-            const targetElement = document.querySelector(href);
-            
-            if (targetElement) {
-                event.preventDefault();
-                
-                // Calculate offset for sticky header
-                const headerHeight = document.querySelector('.main-header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update URL without jumping
-                history.pushState(null, null, href);
-            }
-        });
-    });
-}
-
-/**
  * FAQ Accordion Functionality
  * Handles expanding and collapsing FAQ items
  */
@@ -292,7 +255,6 @@ function initFAQAccordion() {
     faqQuestions.forEach(question => {
         question.addEventListener('click', function() {
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            const answer = this.nextElementSibling;
             
             // Close all other questions in the same group
             const currentGroup = this.closest('.faq-group');
@@ -306,23 +268,6 @@ function initFAQAccordion() {
             
             // Toggle current question
             this.setAttribute('aria-expanded', !isExpanded);
-            
-            // Smooth height animation for answer
-            if (!isExpanded) {
-                answer.style.display = 'block';
-                answer.style.maxHeight = 'none';
-                const height = answer.offsetHeight;
-                answer.style.maxHeight = '0';
-                answer.offsetHeight; // Force reflow
-                answer.style.transition = 'max-height 0.3s ease-out';
-                answer.style.maxHeight = height + 'px';
-            } else {
-                answer.style.transition = 'max-height 0.3s ease-out';
-                answer.style.maxHeight = '0';
-                setTimeout(() => {
-                    answer.style.display = 'none';
-                }, 300);
-            }
         });
     });
 }
@@ -375,45 +320,6 @@ function initScrollAnimations() {
             element.style.opacity = '1';
             element.style.transform = 'translateY(0)';
         });
-    }
-}
-
-/**
- * Form Handling
- * Handles form submissions and contact interactions
- */
-function initFormHandling() {
-    // CTA Button click tracking
-    const ctaButtons = document.querySelectorAll('.cta-button, .cta-primary');
-    
-    ctaButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            const buttonText = this.textContent.trim();
-            const href = this.getAttribute('href');
-            
-            // Track button clicks (you can integrate with analytics here)
-            console.log('CTA Button clicked:', buttonText);
-            
-            // Handle pricing navigation
-            if (href === '#pricing') {
-                event.preventDefault();
-                scrollToPricing();
-            }
-        });
-    });
-    
-    // Scroll to pricing section
-    function scrollToPricing() {
-        const pricingSection = document.querySelector('#pricing');
-        if (pricingSection) {
-            const headerHeight = document.querySelector('.main-header').offsetHeight;
-            const targetPosition = pricingSection.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
     }
 }
 

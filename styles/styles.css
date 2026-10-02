@@ -299,7 +299,7 @@ p {
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/webfonts/fa-solid-900.woff2") format("woff2");
+    src: url("../assets/fonts/fa-solid-900.subset.woff2") format("woff2");
 }
 
 @font-face {
@@ -307,7 +307,7 @@ p {
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/webfonts/fa-brands-400.woff2") format("woff2");
+    src: url("../assets/fonts/fa-brands-400.subset.woff2") format("woff2");
 }
 
 .fa-solid {
@@ -672,31 +672,31 @@ p {
     box-shadow: var(--shadow-lg);
 }
 
-/* Rectangular crop container for feature visuals */
+/* Preserve the square source image ratio without cropping its contents. */
 .feature-item__visual {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 9; /* rectangular, reduces vertical space */
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
     background: var(--color-surface-100);
 }
 
+.feature-item__visual picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .feature-item__visual .feature-item__image {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     display: block;
     border-radius: 0; /* radius handled by container */
     box-shadow: none; /* shadow handled by container */
-}
-
-@media (max-width: 768px) {
-    .feature-item__visual {
-        aspect-ratio: 4 / 3; 
-    }
 }
 
 /* ===== SOCIAL PROOF SECTION ===== */
