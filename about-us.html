@@ -9,21 +9,26 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preload" href="assets/translations.json" as="fetch" crossorigin="anonymous" fetchpriority="high">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet"></noscript>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link" data-translate="skip_to_main">Skip to main content</a>
     <!-- Header Section -->
     <header class="main-header">
         <div class="container">
             <div class="header__content">
                 <div class="header__logo">
                     <a href="index.html" class="header__logo-link" aria-label="Go to home" data-translate="go_home">
-                        <img src="assets/img/logo.png" alt="IoBuild Logo" class="logo__image">
+                        <picture>
+                            <source srcset="assets/img/logo.webp" type="image/webp">
+                            <img src="assets/img/logo.png" alt="IoBuild Logo" class="logo__image" width="1471" height="351">
+                        </picture>
                     </a>
                 </div>
                 
@@ -39,7 +44,7 @@
                         <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
                         <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
                     </div>
-                    <a href="index.html#pricing" class="cta-primary" data-translate="start_now">Get Started</a>
+                    <a href="https://iobuild-remix.arroz.dev" class="cta-primary" data-translate="start_now">Get Started</a>
                 </nav>
                 
                 <button class="mobile-menu-toggle" aria-label="Open navigation menu" data-translate="mobile_menu_toggle">
@@ -51,7 +56,7 @@
         </div>
     </header>
 
-    <main class="main-content">
+    <main class="main-content" id="main-content">
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
@@ -238,7 +243,7 @@
                         <a href="index.html#pricing" class="cta-button cta-button--primary" data-translate="about_cta_primary">
                             View Our Plans
                         </a>
-                        <a href="#" class="cta-button cta-button--secondary" data-translate="about_cta_secondary">
+                        <a href="https://iobuild-remix.arroz.dev" class="cta-button cta-button--secondary" data-translate="about_cta_secondary">
                             Contact Team
                         </a>
                     </div>
@@ -253,7 +258,10 @@
             <div class="footer__content">
                 <div class="footer__section footer__section--brand">
                     <div class="footer__logo">
-                        <img src="assets/img/logo.png" alt="IoBuild Logo" class="footer__logo-image">
+                        <picture>
+                            <source srcset="assets/img/logo.webp" type="image/webp">
+                            <img src="assets/img/logo.png" alt="IoBuild Logo" class="footer__logo-image" width="1471" height="351">
+                        </picture>
                         
                     </div>
                     <p class="footer__description" data-translate="footer_description">
@@ -273,7 +281,7 @@
                 </div>
                 
                 <div class="footer__section">
-                    <h4 class="footer__section-title" data-translate="footer_product">Product</h4>
+                    <h3 class="footer__section-title" data-translate="footer_product">Product</h3>
                     <ul class="footer__links">
                         <li><a href="index.html#features" class="footer__link" data-translate="footer_features">Features</a></li>
                         <li><a href="index.html#pricing" class="footer__link" data-translate="footer_pricing">Pricing</a></li>
@@ -283,7 +291,7 @@
                 </div>
                 
                 <div class="footer__section">
-                    <h4 class="footer__section-title" data-translate="footer_company">Company</h4>
+                    <h3 class="footer__section-title" data-translate="footer_company">Company</h3>
                     <ul class="footer__links">
                         <li><a href="about-us.html" class="footer__link" data-translate="footer_about">About Us</a></li>
                         <li><a href="#" class="footer__link" data-translate="footer_careers">Careers</a></li>
@@ -293,7 +301,7 @@
                 </div>
                 
                 <div class="footer__section">
-                    <h4 class="footer__section-title" data-translate="footer_support">Support</h4>
+                    <h3 class="footer__section-title" data-translate="footer_support">Support</h3>
                     <ul class="footer__links">
                         <li><a href="faq.html" class="footer__link" data-translate="footer_faq">FAQ</a></li>
                         <li><a href="#" class="footer__link" data-translate="footer_contact">Contact</a></li>
@@ -303,7 +311,7 @@
                 </div>
                 
                 <div class="footer__section">
-                    <h4 class="footer__section-title" data-translate="footer_legal">Legal</h4>
+                    <h3 class="footer__section-title" data-translate="footer_legal">Legal</h3>
                     <ul class="footer__links">
                         <li><a href="#" class="footer__link" data-translate="footer_terms">Terms of Use</a></li>
                         <li><a href="#" class="footer__link" data-translate="footer_privacy">Privacy Policy</a></li>

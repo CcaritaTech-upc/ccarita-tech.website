@@ -394,12 +394,6 @@ function initFormHandling() {
             // Track button clicks (you can integrate with analytics here)
             console.log('CTA Button clicked:', buttonText);
             
-            // Handle demo requests
-            if (buttonText.includes('Demo') || buttonText.includes('Consulta')) {
-                event.preventDefault();
-                showContactModal();
-            }
-            
             // Handle pricing navigation
             if (href === '#pricing') {
                 event.preventDefault();
@@ -407,17 +401,6 @@ function initFormHandling() {
             }
         });
     });
-    
-    // Contact form handling (placeholder for modal)
-    function showContactModal() {
-        // This would typically open a modal or redirect to a contact form
-        alert('¡Gracias por tu interés! Te contactaremos pronto para agendar tu demo personalizada.');
-        
-        // In a real implementation, you might:
-        // - Open a modal with a contact form
-        // - Redirect to a dedicated contact page
-        // - Integrate with a CRM or email service
-    }
     
     // Scroll to pricing section
     function scrollToPricing() {
@@ -483,34 +466,6 @@ window.addEventListener('error', function(event) {
  * Additional keyboard navigation and screen reader support
  */
 function initAccessibilityEnhancements() {
-    // Skip to main content link
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Saltar al contenido principal';
-    skipLink.className = 'skip-link sr-only';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: var(--color-primary);
-        color: white;
-        padding: 8px;
-        text-decoration: none;
-        border-radius: 4px;
-        z-index: 1000;
-        transition: top 0.3s;
-    `;
-    
-    skipLink.addEventListener('focus', function() {
-        this.style.top = '6px';
-    });
-    
-    skipLink.addEventListener('blur', function() {
-        this.style.top = '-40px';
-    });
-    
-    document.body.insertBefore(skipLink, document.body.firstChild);
-    
     // Keyboard navigation for FAQ
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {

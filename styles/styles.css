@@ -170,6 +170,22 @@ section {
     border: 0;
 }
 
+.skip-link {
+    position: fixed;
+    top: var(--spacing-2);
+    left: var(--spacing-2);
+    z-index: 1200;
+    padding: var(--spacing-3) var(--spacing-4);
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary-700);
+    border-radius: var(--radius-md);
+    transform: translateY(calc(-100% - var(--spacing-4)));
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+}
+
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
@@ -224,21 +240,21 @@ p {
 }
 
 .cta-button--primary {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
     box-shadow: var(--shadow-md);
 }
 
 .cta-button--primary:hover {
-    background-color: var(--color-primary-600);
+    background-color: var(--color-primary-800);
     box-shadow: var(--shadow-lg);
     transform: translateY(-1px);
 }
 
 .cta-button--secondary {
     background-color: var(--color-surface);
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: var(--color-primary-700);
+    border-color: var(--color-primary-700);
     box-shadow: var(--shadow-sm);
 }
 
@@ -264,7 +280,7 @@ p {
 }
 
 .cta-primary {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
     padding: var(--spacing-2) var(--spacing-4);
     border-radius: var(--radius-lg);
@@ -273,11 +289,52 @@ p {
 }
 
 .cta-primary:hover {
-    background-color: var(--color-primary-600);
+    background-color: var(--color-primary-800);
     transform: translateY(-1px);
 }
 
 /* ===== ICONS ===== */
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/webfonts/fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Font Awesome 6 Brands";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/webfonts/fa-brands-400.woff2") format("woff2");
+}
+
+.fa-solid {
+    font-family: "Font Awesome 6 Free";
+    font-style: normal;
+    font-weight: 900;
+}
+
+.fa-brands {
+    font-family: "Font Awesome 6 Brands";
+    font-style: normal;
+    font-weight: 400;
+}
+
+.fa-screwdriver-wrench::before { content: "\f7d9"; }
+.fa-sliders::before { content: "\f1de"; }
+.fa-layer-group::before { content: "\f5fd"; }
+.fa-chart-line::before { content: "\f201"; }
+.fa-leaf::before { content: "\f06c"; }
+.fa-headset::before { content: "\f590"; }
+.fa-lightbulb::before { content: "\f0eb"; }
+.fa-star::before { content: "\f005"; }
+.fa-people-group::before { content: "\e533"; }
+.fa-linkedin-in::before { content: "\f0e1"; }
+.fa-twitter::before { content: "\f099"; }
+.fa-youtube::before { content: "\f167"; }
+
 .icon {
     width: 1.5rem;
     height: 1.5rem;
@@ -328,7 +385,7 @@ p {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 .main-nav {
@@ -368,7 +425,7 @@ p {
 
 .nav__link:hover,
 .nav__link--active {
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 .nav__link--active::after {
@@ -378,7 +435,7 @@ p {
     left: 0;
     right: 0;
     height: 2px;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     border-radius: var(--radius-full);
 }
 
@@ -400,7 +457,7 @@ p {
     border-radius: var(--radius-full);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
-    color: var(--color-text-secondary);
+    color: var(--color-gray-700);
     cursor: pointer;
     transition: all var(--transition-fast);
     min-width: 2.5rem;
@@ -408,18 +465,18 @@ p {
 }
 
 .lang-btn:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-800);
     background-color: var(--color-gray-200);
 }
 
 .lang-btn.active {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
     box-shadow: var(--shadow-sm);
 }
 
-.lang-btn:focus {
-    outline: 2px solid var(--color-primary);
+.lang-btn:focus-visible {
+    outline: 2px solid var(--color-primary-700);
     outline-offset: 2px;
 }
 
@@ -530,7 +587,7 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: var(--spacing-6);
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 /* Font Awesome icon sizing within benefit cards */
@@ -603,7 +660,7 @@ p {
 
 .feature-item__list li::before {
     content: '✓';
-    color: var(--color-primary);
+    color: var(--color-primary-700);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-lg);
 }
@@ -689,6 +746,7 @@ p {
 }
 
 .testimonial-card__name {
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-1);
@@ -726,7 +784,7 @@ p {
 }
 
 .pricing-card--featured {
-    border-color: var(--color-primary);
+    border-color: var(--color-primary-700);
     box-shadow: var(--shadow-lg);
     transform: scale(1.05);
 }
@@ -740,7 +798,7 @@ p {
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
     padding: var(--spacing-1) var(--spacing-4);
     border-radius: var(--radius-full);
@@ -802,7 +860,7 @@ p {
 
 .pricing-card__features li::before {
     content: '✓';
-    color: var(--color-primary);
+    color: var(--color-primary-700);
     font-weight: var(--font-weight-bold);
 }
 
@@ -886,7 +944,7 @@ p {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-bold);
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 .footer__description {
@@ -913,12 +971,13 @@ p {
 }
 
 .footer__social-link:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
     transform: translateY(-2px);
 }
 
 .footer__section-title {
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
     margin-bottom: var(--spacing-4);
     color: var(--color-text-inverse);
@@ -1062,7 +1121,7 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: var(--spacing-4);
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 .value-card__icon i {
@@ -1180,7 +1239,7 @@ p {
 }
 
 .team-card__role {
-    color: var(--color-primary);
+    color: var(--color-primary-700);
     font-weight: var(--font-weight-medium);
     margin-bottom: var(--spacing-3);
 }
@@ -1247,9 +1306,9 @@ p {
 
 .faq-category-btn:hover,
 .faq-category-btn--active {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
-    border-color: var(--color-primary);
+    border-color: var(--color-primary-700);
 }
 
 .faq-group {
@@ -1281,7 +1340,7 @@ p {
 }
 
 .faq-question:hover {
-    color: var(--color-primary);
+    color: var(--color-primary-700);
 }
 
 .faq-icon {
