@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScrolling();
     initFAQAccordion();
-    initLazyLoading();
     initScrollAnimations();
     initFormHandling();
 });
@@ -329,46 +328,6 @@ function initFAQAccordion() {
 }
 
 /**
- * Lazy Loading for Images
- * Implements intersection observer for performance optimization
- */
-function initLazyLoading() {
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    
-                    // Create a new image to preload
-                    const newImg = new Image();
-                    newImg.onload = function() {
-                        img.src = this.src;
-                        img.classList.add('loaded');
-                    };
-                    
-                    newImg.src = img.getAttribute('src');
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '50px 0px',
-            threshold: 0.01
-        });
-        
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for browsers without IntersectionObserver
-        lazyImages.forEach(img => {
-            img.src = img.getAttribute('src');
-        });
-    }
-}
-
-/**
  * Scroll Animations
  * Adds fade-in animations for elements as they come into view
  */
@@ -474,71 +433,6 @@ function initFormHandling() {
         }
     }
 }
-
-/**
- * Header Scroll Effect
- * Adds scroll-based styling to the header
- */
-function initHeaderScrollEffect() {
-    const header = document.querySelector('.main-header');
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', function() {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Previous behavior hid the header when scrolling down. Disabled so header remains visible.
-        // If you prefer auto-hide, uncomment the block below.
-        /*
-        if (currentScrollY > lastScrollY && currentScrollY > 200) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-        */
-        
-        lastScrollY = currentScrollY;
-    });
-}
-
-/**
- * Utility Functions
- */
-
-// Debounce function for performance optimization
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// Initialize header scroll effect with throttling
-window.addEventListener('scroll', throttle(initHeaderScrollEffect, 10));
 
 /**
  * Analytics Integration Placeholder
