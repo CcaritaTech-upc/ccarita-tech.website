@@ -27,6 +27,7 @@ async function initI18n() {
         
         // Get saved language or use default
         currentLang = localStorage.getItem('preferred-language') || 'en';
+        document.documentElement.lang = currentLang;
         
         // Apply translations
         applyTranslations();
