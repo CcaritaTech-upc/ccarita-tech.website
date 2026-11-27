@@ -916,7 +916,7 @@ p {
 
 .footer__content {
     display: grid;
-    grid-template-columns: 2fr repeat(4, 1fr);
+    grid-template-columns: 2fr repeat(3, 1fr);
     gap: var(--spacing-8);
     margin-bottom: var(--spacing-12);
 }
@@ -1552,4 +1552,41 @@ p {
     .pricing-card--featured:hover {
         transform: translateY(-4px);
     }
+}
+
+/* Plan actions */
+.pricing-grid .pricing-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card__action {
+    margin-top: auto;
+}
+
+.pricing-card__button {
+    display: block;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: 2px solid var(--color-primary-700);
+    border-radius: var(--radius-full);
+    color: var(--color-primary-700);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    text-decoration: none;
+}
+
+.pricing-card__button--primary {
+    background-color: var(--color-primary-700);
+    color: var(--color-text-inverse);
+}
+
+.pricing-card__button:hover,
+.pricing-card__button:focus-visible {
+    text-decoration: underline;
+}
+
+.pricing-note {
+    margin-top: var(--spacing-8);
+    text-align: center;
+    color: var(--color-text-secondary);
 }
